@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:tech_bloc/gen/assets.gen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +37,12 @@ class MyApp extends StatelessWidget {
                 fontFamily: "homa", fontSize: 12, color: Colors.white)),
         primarySwatch: Colors.purple,
       ),
-      home: const Scaffold(),
+      home:Scaffold(
+
+        body: Center(
+          child: Image(image: Assets.images.splashIcon.provider(),)
+        ),
+      ),
     );
   }
 }
