@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tech_bloc/gen/assets.gen.dart';
+import 'package:tech_bloc/my_colors.dart';
+import 'package:tech_bloc/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,22 +27,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: const TextTheme(
             headline1: TextStyle(
-                fontFamily: "cinema", fontSize: 20, color: Colors.black),
-            headline2: TextStyle(
-                fontFamily: "cinema", fontSize: 20, color: Colors.white),
-            headline3: TextStyle(
-                fontFamily: "cinema", fontSize: 16, color: Colors.black),
-            bodyText1: TextStyle(
-                fontFamily: "homa", fontSize: 12, color: Colors.black),
-            bodyText2: TextStyle(
-                fontFamily: "homa", fontSize: 12, color: Colors.white)),
+                fontFamily: "homa",
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: FromColors.posterTitle),
+            subtitle1: TextStyle(
+                fontFamily: "homa",
+                fontSize: 14,
+                color: FromColors.posterSubTitle)),
         primarySwatch: Colors.purple,
       ),
-      home:Scaffold(
-
-        body: Center(
-          child: Image(image: Assets.images.splashIcon.provider(),)
-        ),
+      home: const Scaffold(
+        body: SplashScreen(),
       ),
     );
   }

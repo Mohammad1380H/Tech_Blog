@@ -12,12 +12,20 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/Images/appBarLogo.png
+  AssetGenImage get appBarLogo =>
+      const AssetGenImage('assets/Images/appBarLogo.png');
+
+  /// File path: assets/Images/programming.png
+  AssetGenImage get programming =>
+      const AssetGenImage('assets/Images/programming.png');
+
   /// File path: assets/Images/splashIcon.png
   AssetGenImage get splashIcon =>
       const AssetGenImage('assets/Images/splashIcon.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splashIcon];
+  List<AssetGenImage> get values => [appBarLogo, programming, splashIcon];
 }
 
 class Assets {
