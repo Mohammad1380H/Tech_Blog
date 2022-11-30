@@ -9,28 +9,66 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/Icons/hashTag.png
+  AssetGenImage get hashTag => const AssetGenImage('assets/Icons/hashTag.png');
+
+  /// File path: assets/Icons/home.png
+  AssetGenImage get home => const AssetGenImage('assets/Icons/home.png');
+
+  /// File path: assets/Icons/penLogo.png
+  AssetGenImage get penLogo => const AssetGenImage('assets/Icons/penLogo.png');
+
+  /// File path: assets/Icons/podIcon.png
+  AssetGenImage get podIcon => const AssetGenImage('assets/Icons/podIcon.png');
+
+  /// File path: assets/Icons/user.png
+  AssetGenImage get user => const AssetGenImage('assets/Icons/user.png');
+
+  /// File path: assets/Icons/writer.png
+  AssetGenImage get writer => const AssetGenImage('assets/Icons/writer.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [hashTag, home, penLogo, podIcon, user, writer];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/Images/ArtPic.png
+  AssetGenImage get artPic => const AssetGenImage('assets/Images/ArtPic.png');
 
   /// File path: assets/Images/appBarLogo.png
   AssetGenImage get appBarLogo =>
       const AssetGenImage('assets/Images/appBarLogo.png');
 
+  /// File path: assets/Images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/Images/profile.png');
+
   /// File path: assets/Images/programming.png
   AssetGenImage get programming =>
       const AssetGenImage('assets/Images/programming.png');
+
+  /// File path: assets/Images/salidity.png
+  AssetGenImage get salidity =>
+      const AssetGenImage('assets/Images/salidity.png');
 
   /// File path: assets/Images/splashIcon.png
   AssetGenImage get splashIcon =>
       const AssetGenImage('assets/Images/splashIcon.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [appBarLogo, programming, splashIcon];
+  List<AssetGenImage> get values =>
+      [artPic, appBarLogo, profile, programming, salidity, splashIcon];
 }
 
 class Assets {
   Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
