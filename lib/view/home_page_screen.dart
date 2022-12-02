@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../gen/assets.gen.dart';
 import '../models/data_model.dart';
 import '../models/fake_data.dart';
-import '../my_Strings.dart';
+import '../my_strings.dart';
 import '../my_colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,19 +25,18 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-
           HomePagePoster(size: size, textTheme: textTheme),
-
           HomePageTags(marginTag: marginTag, size: size, textTheme: textTheme),
-
           SeeMoreDocs(marginTag: marginTag, textTheme: textTheme),
-
-          DocsList(listViewHeight: listViewHeight, marginTag: marginTag, textTheme: textTheme),
-          
+          DocsList(
+              listViewHeight: listViewHeight,
+              marginTag: marginTag,
+              textTheme: textTheme),
           SeeMorePods(marginTag: marginTag, textTheme: textTheme),
-
-          PodsList(listViewHeight: listViewHeight, marginTag: marginTag, textTheme: textTheme),
-
+          PodsList(
+              listViewHeight: listViewHeight,
+              marginTag: marginTag,
+              textTheme: textTheme),
           const SizedBox(
             height: 110,
           )
@@ -46,7 +45,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
 
 ///////////////classes and widgets in this lib////////////////////
 
@@ -109,7 +107,7 @@ class SeeMorePods extends StatelessWidget {
           ),
           const SizedBox(width: 2),
           Text(
-            Strings.hotPod,
+            FromStrings.hotPod,
             style: textTheme.headline2,
           )
         ],
@@ -177,7 +175,7 @@ class SeeMoreDocs extends StatelessWidget {
           ),
           const SizedBox(width: 2),
           Text(
-            Strings.hotDoc,
+            FromStrings.hotDoc,
             style: textTheme.headline2,
           )
         ],
@@ -210,8 +208,8 @@ class HomePageTags extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
             return Padding(
-              padding: EdgeInsets.fromLTRB(
-                  20, 0, index == 0 ? marginTag : 0, 0),
+              padding:
+                  EdgeInsets.fromLTRB(20, 0, index == 0 ? marginTag : 0, 0),
               child: Container(
                 decoration: BoxDecoration(
                     gradient: const LinearGradient(
@@ -277,7 +275,7 @@ class HomePagePoster extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
-                    image: fake_data["imageAsset"].provider(),
+                    image: fakeData["imageAsset"].provider(),
                     fit: BoxFit.cover)),
           ),
         ),
@@ -291,14 +289,14 @@ class HomePagePoster extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    fake_data["writer"] + " - " + fake_data["date"],
+                    fakeData["writer"] + " - " + fakeData["date"],
                     style: textTheme.subtitle1,
                   ),
                   //view
                   Row(
                     children: [
                       Text(
-                        fake_data["view"],
+                        fakeData["view"],
                         style: textTheme.subtitle1,
                       ),
                       const SizedBox(
@@ -317,7 +315,7 @@ class HomePagePoster extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  fake_data["title"],
+                  fakeData["title"],
                   style: textTheme.headline1,
                 ),
               ),

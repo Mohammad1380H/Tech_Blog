@@ -8,6 +8,8 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
@@ -24,6 +26,9 @@ class $AssetsIconsGen {
   /// File path: assets/Icons/podIcon.png
   AssetGenImage get podIcon => const AssetGenImage('assets/Icons/podIcon.png');
 
+  /// File path: assets/Icons/techBot.svg
+  SvgGenImage get techBot => const SvgGenImage('assets/Icons/techBot.svg');
+
   /// File path: assets/Icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/Icons/user.png');
 
@@ -31,8 +36,8 @@ class $AssetsIconsGen {
   AssetGenImage get writer => const AssetGenImage('assets/Icons/writer.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [hashTag, home, penLogo, podIcon, user, writer];
+  List<dynamic> get values =>
+      [hashTag, home, penLogo, podIcon, techBot, user, writer];
 }
 
 class $AssetsImagesGen {
@@ -131,6 +136,57 @@ class AssetGenImage {
   }
 
   ImageProvider provider() => AssetImage(_assetName);
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
+    );
+  }
 
   String get path => _assetName;
 

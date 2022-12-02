@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 
 class FromColors {
   static const primaryColor = Color.fromARGB(255, 68, 4, 87);
+  static const regiterBtnColor = Color.fromARGB(255, 66, 4, 87);
   static const scaffColor = Color.fromARGB(255, 255, 255, 255);
 
   static const dividerColor = Color.fromARGB(255, 122, 122, 122);
+  static const hintTexes = Color.fromARGB(255, 219, 219, 219);
 
   static const posterTitle = Color.fromARGB(255, 255, 255, 255);
   static const posterSubTitle = Color.fromARGB(255, 255, 255, 255);

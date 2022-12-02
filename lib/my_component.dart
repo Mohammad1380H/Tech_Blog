@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_bloc/my_colors.dart';
 
+// ignore: must_be_immutable
 class TechDivider extends StatelessWidget {
    TechDivider({
     Key? key,

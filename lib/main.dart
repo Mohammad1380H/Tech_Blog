@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+ 
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TechBlog',
@@ -26,6 +28,29 @@ class MyApp extends StatelessWidget {
         const Locale('fa', ''), // English, no country code
       ],
       theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(textStyle:
+                MaterialStateProperty.resolveWith<TextStyle?>((states) {
+          if (states.contains(MaterialState.pressed)) {
+            return const TextStyle(
+                fontFamily: "homa",
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: FromColors.hintTexes);
+          }
+          return const TextStyle(
+                fontFamily: "homa",
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: FromColors.hintTexes);
+
+        }), backgroundColor:
+                MaterialStateProperty.resolveWith<Color?>((states) {
+          if (states.contains(MaterialState.pressed)) {
+            return FromColors.primaryColor;
+          }
+          return FromColors.regiterBtnColor;
+        }))),
         textTheme: const TextTheme(
             headline1: TextStyle(
                 fontFamily: "homa",
@@ -42,6 +67,11 @@ class MyApp extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: FromColors.articalPreviewTitle),
+            headline4: TextStyle(
+                fontFamily: "homa",
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: FromColors.hintTexes),
             subtitle1: TextStyle(
                 fontFamily: "homa",
                 fontSize: 14,

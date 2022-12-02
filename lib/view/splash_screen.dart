@@ -14,13 +14,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     Future.delayed(const Duration(seconds: 3)).then(
       (value) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-          builder: (context) => MainPage(),
+          builder: (context) => const MainPage(),
         ));
       },
     );
@@ -29,7 +29,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    // TODO: implement build
     return Scaffold(
       body: SafeArea(
           child: Center(

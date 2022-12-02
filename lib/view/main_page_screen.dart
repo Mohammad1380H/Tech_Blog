@@ -4,10 +4,11 @@ import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/my_colors.dart';
 import 'package:tech_bloc/view/home_page_screen.dart';
 import 'package:tech_bloc/view/profile_page.dart';
+import 'package:tech_bloc/view/register_intro.dart';
 
 // ignore: must_be_immutable
 class MainPage extends StatefulWidget {
-  MainPage({super.key});
+  const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -23,20 +24,8 @@ class _MainPageState extends State<MainPage> {
     var textTheme = Theme.of(context).textTheme;
     double listViewHeight = 170;
     double marginTag = size.width / 12;
-    List<Widget> pageList = [
-      HomePage(
-          size: size,
-          textTheme: textTheme,
-          marginTag: marginTag,
-          listViewHeight: listViewHeight),
-      ProfilePage(
-          size: size,
-          textTheme: textTheme,
-          marginTag: marginTag,
-          listViewHeight: listViewHeight)
-    ];
 
-    // TODO: implement build
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -66,7 +55,23 @@ class _MainPageState extends State<MainPage> {
       ),
       body: SafeArea(
           child: Stack(children: [
-        Positioned.fill(child: pageList[selectedPageIndex]),
+        Positioned.fill(
+            child: IndexedStack(
+          index: selectedPageIndex,
+          children: [
+            HomePage(
+                size: size,
+                textTheme: textTheme,
+                marginTag: marginTag,
+                listViewHeight: listViewHeight),
+            ProfilePage(
+                size: size,
+                textTheme: textTheme,
+                marginTag: marginTag,
+                listViewHeight: listViewHeight),
+                const RegisterIntro()
+          ],
+        )),
         Positioned(
           bottom: 0,
           right: 1,
@@ -97,7 +102,7 @@ class BottonNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height / 8.2,
+      height: size.height / 9.5,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
             colors: FromGradiant.bottomNavBack,
@@ -106,7 +111,7 @@ class BottonNav extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(right: 50, left: 50, bottom: 15),
-        child: Container(
+        child: Container( 
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               gradient: const LinearGradient(colors: FromGradiant.bottomNav),
@@ -123,7 +128,7 @@ class BottonNav extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () =>onHomePageClicked(2),
                     icon: ImageIcon(
                       Assets.icons.writer.provider(),
                       color: Colors.white,
