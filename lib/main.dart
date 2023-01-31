@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tech_bloc/my_colors.dart';
+import 'package:tech_bloc/component/my_colors.dart';
 import 'package:tech_bloc/view/splash_screen.dart';
 
 void main() {
@@ -52,27 +52,27 @@ class MyApp extends StatelessWidget {
           return FromColors.regiterBtnColor;
         }))),
         textTheme: const TextTheme(
-            headline1: TextStyle(
+            displayLarge: TextStyle(
                 fontFamily: "homa",
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: FromColors.posterTitle),
-            headline2: TextStyle(
+            displayMedium: TextStyle(
                 fontFamily: "homa",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: FromColors.linkedTextColor),
-            headline3: TextStyle(
+            displaySmall: TextStyle(
                 fontFamily: "homa",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: FromColors.articalPreviewTitle),
-            headline4: TextStyle(
+            headlineMedium: TextStyle(
                 fontFamily: "homa",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: FromColors.hintTexes),
-            subtitle1: TextStyle(
+            titleMedium: TextStyle(
                 fontFamily: "homa",
                 fontSize: 14,
                 color: FromColors.posterSubTitle)),

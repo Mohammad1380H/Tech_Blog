@@ -1,22 +1,24 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tech_bloc/component/my_colors.dart';
+import 'package:tech_bloc/component/my_component.dart';
+import 'package:tech_bloc/component/my_strings.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
 
-import 'package:tech_bloc/my_colors.dart';
 import 'package:tech_bloc/view/home_page_screen.dart';
 import 'package:tech_bloc/view/profile_page.dart';
 import 'package:tech_bloc/view/register_intro.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-// ignore: must_be_immutable
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+GlobalKey<ScaffoldState> _key = GlobalKey();
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
+class MainPage extends StatelessWidget {
   TextEditingController id = TextEditingController();
-  int selectedPageIndex = 0;
+
+  MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +26,77 @@ class _MainPageState extends State<MainPage> {
     var textTheme = Theme.of(context).textTheme;
     double listViewHeight = 170;
     double marginTag = size.width / 12;
-
-
+    Rx<int> selectedPageIndex = 0.obs;
     return Scaffold(
+      key: _key,
+      drawer: Drawer(
+        backgroundColor: FromColors.scaffColor,
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: marginTag, right: marginTag),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                    child: Image.asset(
+                  Assets.images.appBarLogo.path,
+                  scale: 1.5,
+                )),
+                ListTile(
+                  title: Text(
+                    "پروفایل کاربری",
+                    style: textTheme.headline3,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: FromColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "درباره تک‌بلاگ",
+                    style: textTheme.headline3,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: FromColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "اشتراک گذاری تک بلاگ",
+                    style: textTheme.headline3,
+                  ),
+                  onTap: () async {
+                    await Share.share(FromStrings.shareText);
+                  },
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: FromColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "تک بلاگ در گیتهاب",
+                    style: textTheme.headline3,
+                  ),
+                  onTap: () {
+                    openUrl(FromStrings.techBlogGitHub);
+                   
+                  },
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: FromColors.dividerColor,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: FromColors.scaffColor,
         title: Padding(
@@ -35,10 +104,15 @@ class _MainPageState extends State<MainPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Icon(
-                Icons.menu,
-                size: 30,
-                color: Colors.black,
+              InkWell(
+                onTap: () {
+                  _key.currentState!.openDrawer();
+                },
+                child: const Icon(
+                  Icons.menu,
+                  size: 30,
+                  color: Colors.black,
+                ),
               ),
               Image(
                 image: Assets.images.appBarLogo.provider(),
@@ -56,22 +130,22 @@ class _MainPageState extends State<MainPage> {
       body: SafeArea(
           child: Stack(children: [
         Positioned.fill(
-            child: IndexedStack(
-          index: selectedPageIndex,
-          children: [
-            HomePage(
-                size: size,
-                textTheme: textTheme,
-                marginTag: marginTag,
-                listViewHeight: listViewHeight),
-            ProfilePage(
-                size: size,
-                textTheme: textTheme,
-                marginTag: marginTag,
-                listViewHeight: listViewHeight),
-                const RegisterIntro()
-          ],
-        )),
+            child: Obx(() => IndexedStack(
+                  index: selectedPageIndex.value,
+                  children: [
+                    HomePage(
+                        size: size,
+                        textTheme: textTheme,
+                        marginTag: marginTag,
+                        listViewHeight: listViewHeight),
+                    ProfilePage(
+                        size: size,
+                        textTheme: textTheme,
+                        marginTag: marginTag,
+                        listViewHeight: listViewHeight),
+                    const RegisterIntro()
+                  ],
+                ))),
         Positioned(
           bottom: 0,
           right: 1,
@@ -79,9 +153,7 @@ class _MainPageState extends State<MainPage> {
           child: BottonNav(
             size: size,
             onHomePageClicked: (int value) {
-              setState(() {
-                selectedPageIndex = value;
-              });
+              selectedPageIndex.value = value;
             },
           ),
         ),
@@ -111,7 +183,7 @@ class BottonNav extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(right: 50, left: 50, bottom: 15),
-        child: Container( 
+        child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               gradient: const LinearGradient(colors: FromGradiant.bottomNav),
@@ -128,7 +200,7 @@ class BottonNav extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () =>onHomePageClicked(2),
+                    onPressed: () => onHomePageClicked(2),
                     icon: ImageIcon(
                       Assets.icons.writer.provider(),
                       color: Colors.white,

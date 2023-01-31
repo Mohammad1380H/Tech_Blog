@@ -14,6 +14,9 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/Icons/arrow_down.svg
+  SvgGenImage get arrowDown => const SvgGenImage('assets/Icons/arrow_down.svg');
+
   /// File path: assets/Icons/hashTag.png
   AssetGenImage get hashTag => const AssetGenImage('assets/Icons/hashTag.png');
 
@@ -37,7 +40,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values =>
-      [hashTag, home, penLogo, podIcon, techBot, user, writer];
+      [arrowDown, hashTag, home, penLogo, podIcon, techBot, user, writer];
 }
 
 class $AssetsImagesGen {

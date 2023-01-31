@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:tech_bloc/component/my_colors.dart';
+import 'package:tech_bloc/controller/home_screen_controller.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/view/main_page_screen.dart';
-import 'package:tech_bloc/my_colors.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,15 +14,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  HomeScreenController homeScreenController = Get.put(HomeScreenController());
   @override
   void initState() {
-
+    homeScreenController.getHomeItem();
     super.initState();
-    Future.delayed(const Duration(seconds: 3)).then(
+    Future.delayed(const Duration(seconds: 2)).then(
       (value) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-          builder: (context) => const MainPage(),
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => MainPage(),
         ));
       },
     );
@@ -39,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(
               height: size.height / 19,
             ),
-            const SpinKitFoldingCube(
+            const SpinKitCircle(
               color: FromColors.primaryColor,
               size: 50.0,
             )

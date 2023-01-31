@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tech_bloc/component/my_colors.dart';
+import 'package:tech_bloc/component/my_strings.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
-import 'package:tech_bloc/my_colors.dart';
-import 'package:tech_bloc/my_strings.dart';
+import 'package:tech_bloc/view/categories.dart';
+import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
   const RegisterIntro({super.key});
@@ -46,6 +48,10 @@ class RegisterIntro extends StatelessWidget {
 
   Future<dynamic> _showEmailButtomSheet(
       BuildContext context, Size size, TextTheme textTheme) {
+    // RegExp isEmail = RegExp('^[a-z-0-9]+@');
+    bool isEmailCorrect = false;
+    bool isEmailEmpty = true;
+
     return showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
@@ -73,6 +79,10 @@ class RegisterIntro extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                     child: TextField(
+                      onChanged: (value) {
+                        isEmailCorrect = isEmail(value);
+                        isEmailEmpty = value.isEmpty;
+                      },
                       style: const TextStyle(
                           color: FromColors.articalPreviewTitle),
                       textAlign: TextAlign.center,
@@ -86,8 +96,15 @@ class RegisterIntro extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
-                    child:
-                        ElevatedButton(onPressed: () {}, child: Text("ادامه")),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (isEmailCorrect) {
+                            Navigator.pop(context);
+                            _showActivateCodeButtomSheet(
+                                context, size, textTheme);
+                          }
+                        },
+                        child: Text("ادامه")),
                   )
                 ],
               )),
@@ -95,4 +112,67 @@ class RegisterIntro extends StatelessWidget {
           );
         }));
   }
+}
+
+Future<dynamic> _showActivateCodeButtomSheet(
+    BuildContext context, Size size, TextTheme textTheme) {
+  // RegExp isEmail = RegExp('^[a-z-0-9]+@');
+  bool isEmailCorrect = false;
+
+  return showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: ((context) {
+        return Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Container(
+            height: size.height / 2,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+                color: Colors.white),
+            child: Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  FromStrings.insertActivateCode,
+                  style: textTheme.headline3,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                  child: TextField(
+                    onChanged: (value) {
+                      isEmailCorrect = isEmail(value);
+                    },
+                    style:
+                        const TextStyle(color: FromColors.articalPreviewTitle),
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      alignLabelWithHint: true,
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        hintText: "*****",
+                        hintStyle: textTheme.headline4),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => Categories()));
+                      },
+                      child: Text("ادامه")),
+                )
+              ],
+            )),
+          ),
+        );
+      }));
 }
