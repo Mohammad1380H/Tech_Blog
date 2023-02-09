@@ -32,15 +32,38 @@ class $AssetsIconsGen {
   /// File path: assets/Icons/techBot.svg
   SvgGenImage get techBot => const SvgGenImage('assets/Icons/techBot.svg');
 
+  /// File path: assets/Icons/techBotSad.svg
+  SvgGenImage get techBotSad =>
+      const SvgGenImage('assets/Icons/techBotSad.svg');
+
   /// File path: assets/Icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/Icons/user.png');
+
+  /// File path: assets/Icons/write_articles.png
+  AssetGenImage get writeArticles =>
+      const AssetGenImage('assets/Icons/write_articles.png');
+
+  /// File path: assets/Icons/write_podcasts.png
+  AssetGenImage get writePodcasts =>
+      const AssetGenImage('assets/Icons/write_podcasts.png');
 
   /// File path: assets/Icons/writer.png
   AssetGenImage get writer => const AssetGenImage('assets/Icons/writer.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [arrowDown, hashTag, home, penLogo, podIcon, techBot, user, writer];
+  List<dynamic> get values => [
+        arrowDown,
+        hashTag,
+        home,
+        penLogo,
+        podIcon,
+        techBot,
+        techBotSad,
+        user,
+        writeArticles,
+        writePodcasts,
+        writer
+      ];
 }
 
 class $AssetsImagesGen {

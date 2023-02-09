@@ -1,9 +1,9 @@
-
 import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/models/data_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
+import 'package:tech_bloc/models/tags_model.dart';
 
 Map fakeData = {
   "imageAsset": Assets.images.programming,
@@ -13,17 +13,7 @@ Map fakeData = {
   "date": "یک روز پیش"
 };
 
-List<HashTag> tagLists = [
-  HashTag(title: "جاوا"),
-  HashTag(title: "کاتلین"),
-  HashTag(title: "دارت"),
-  HashTag(title: "سی پلاس پلاس"),
-  HashTag(title: "پایتون"),
-  HashTag(title: "هوش مصنوعی"),
-  HashTag(title: "زامارین"),
-];
-
-List<HashTag> choosenTagLists = [];
+List<TagsModel> choosenTagLists = [];
 
 List<BlogsModel> blogList = [
   BlogsModel(

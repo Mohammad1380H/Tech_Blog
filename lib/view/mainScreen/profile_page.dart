@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_bloc/component/my_colors.dart';
 import 'package:tech_bloc/component/my_component.dart';
 import 'package:tech_bloc/component/my_strings.dart';
-import '../gen/assets.gen.dart';
+import '../../gen/assets.gen.dart';
 
 // ignore: must_be_immutable
 class ProfilePage extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:tech_bloc/component/api_constant.dart';
+import 'package:tech_bloc/constants/api_constant.dart';
 
 class ArticalModel {
   String? id;

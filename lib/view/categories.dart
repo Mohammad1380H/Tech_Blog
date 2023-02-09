@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:tech_bloc/component/my_colors.dart';
 import 'package:tech_bloc/component/my_component.dart';
 import 'package:tech_bloc/component/my_strings.dart';
+import 'package:tech_bloc/controller/home_screen_controller.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/models/fake_data.dart';
-
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -13,6 +14,8 @@ class Categories extends StatefulWidget {
   @override
   State<Categories> createState() => _CategoriesState();
 }
+
+HomeScreenController homeScreenController = Get.put(HomeScreenController());
 
 class _CategoriesState extends State<Categories> {
   @override
@@ -36,7 +39,7 @@ class _CategoriesState extends State<Categories> {
                 padding: const EdgeInsets.only(top: 20, bottom: 40),
                 child: Text(
                   FromStrings.registerDone,
-                  style: textTheme.headline3,
+                  style: textTheme.displaySmall,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -51,7 +54,7 @@ class _CategoriesState extends State<Categories> {
                       border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       hintText: "نام و نام خانوادگی",
-                      hintStyle: textTheme.headline4),
+                      hintStyle: textTheme.headlineMedium),
                 ),
               ),
               //chooseCates
@@ -59,7 +62,7 @@ class _CategoriesState extends State<Categories> {
                 padding: const EdgeInsets.only(top: 40, bottom: 20),
                 child: Text(
                   FromStrings.chooseCates,
-                  style: textTheme.headline3,
+                  style: textTheme.displaySmall,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -70,7 +73,7 @@ class _CategoriesState extends State<Categories> {
                 child: GridView.builder(
                   padding: EdgeInsets.only(right: marginTag / 2),
                   scrollDirection: Axis.horizontal,
-                  itemCount: tagLists.length,
+                  itemCount: homeScreenController.tagList.length,
                   shrinkWrap: true,
                   //physics: ClampingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -83,8 +86,10 @@ class _CategoriesState extends State<Categories> {
                     return InkWell(
                       onTap: () {
                         setState(() {
-                          if (!choosenTagLists.contains(tagLists[index])) {
-                            choosenTagLists.add(tagLists[index]);
+                          if (!choosenTagLists
+                              .contains(homeScreenController.tagList[index])) {
+                            choosenTagLists
+                                .add(homeScreenController.tagList[index]);
                           }
                           //print(choosenTagLists.length);
                         });
@@ -92,8 +97,7 @@ class _CategoriesState extends State<Categories> {
                       child: TagsWidget(
                         size: size,
                         textTheme: textTheme,
-                        index: index,
-                        tagList: tagLists,
+                        title: homeScreenController.tagList[index].title!,
                       ),
                     );
                   },
@@ -111,9 +115,6 @@ class _CategoriesState extends State<Categories> {
                 size: size,
                 textTheme: textTheme,
                 marginTag: marginTag / 2,
-
-
-                
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
@@ -135,12 +136,11 @@ class ChoosenTags extends StatefulWidget {
     required this.size,
     required this.textTheme,
     required this.marginTag,
-
   }) : super(key: key);
 
   final Size size;
   final TextTheme textTheme;
-   double marginTag;
+  double marginTag;
 
   @override
   State<ChoosenTags> createState() => _ChoosenTagsState();
@@ -167,18 +167,14 @@ class _ChoosenTagsState extends State<ChoosenTags> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              
               setState(() {
                 choosenTagLists.removeAt(index);
               });
-
-              
             },
             child: TagsWidget(
               size: widget.size,
               textTheme: widget.textTheme,
-              index: index,
-              tagList: choosenTagLists,
+              title: homeScreenController.tagList[index].title!,
             ),
           );
         },

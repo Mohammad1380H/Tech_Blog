@@ -1,25 +1,23 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tech_bloc/component/my_colors.dart';
 import 'package:tech_bloc/component/my_component.dart';
 import 'package:tech_bloc/component/my_strings.dart';
+import 'package:tech_bloc/controller/home_screen_controller.dart';
+import 'package:tech_bloc/controller/register_controller.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
+import 'package:tech_bloc/view/mainScreen/home_page_screen.dart';
+import 'package:tech_bloc/view/mainScreen/profile_page.dart';
+import 'package:tech_bloc/view/register/register_intro.dart';
 
-import 'package:tech_bloc/view/home_page_screen.dart';
-import 'package:tech_bloc/view/profile_page.dart';
-import 'package:tech_bloc/view/register_intro.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-GlobalKey<ScaffoldState> _key = GlobalKey();
+GlobalKey<ScaffoldState> _key = GlobalKey(debugLabel: '_homeScreenkey');
 
 class MainPage extends StatelessWidget {
   TextEditingController id = TextEditingController();
-
+  var homeScreenController = Get.find<HomeScreenController>();
   MainPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -83,7 +81,6 @@ class MainPage extends StatelessWidget {
                   ),
                   onTap: () {
                     openUrl(FromStrings.techBlogGitHub);
-                   
                   },
                 ),
                 const Divider(
@@ -130,22 +127,25 @@ class MainPage extends StatelessWidget {
       body: SafeArea(
           child: Stack(children: [
         Positioned.fill(
-            child: Obx(() => IndexedStack(
-                  index: selectedPageIndex.value,
-                  children: [
-                    HomePage(
+            child: Obx(() => homeScreenController.isLoading.value
+                ? loading(50)
+                : IndexedStack(
+                    index: selectedPageIndex.value,
+                    children: [
+                      HomePage(
+                          size: size,
+                          textTheme: textTheme,
+                          marginTag: marginTag,
+                          listViewHeight: listViewHeight),
+                      ProfilePage(
+                        listViewHeight: listViewHeight,
+                        marginTag: marginTag,
                         size: size,
                         textTheme: textTheme,
-                        marginTag: marginTag,
-                        listViewHeight: listViewHeight),
-                    ProfilePage(
-                        size: size,
-                        textTheme: textTheme,
-                        marginTag: marginTag,
-                        listViewHeight: listViewHeight),
-                    const RegisterIntro()
-                  ],
-                ))),
+                      ),
+                      RegisterIntro(),
+                    ],
+                  ))),
         Positioned(
           bottom: 0,
           right: 1,
@@ -200,7 +200,9 @@ class BottonNav extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () => onHomePageClicked(2),
+                    onPressed: () {
+                      Get.find<RegisterController>().toggleLogin();
+                    },
                     icon: ImageIcon(
                       Assets.icons.writer.provider(),
                       color: Colors.white,

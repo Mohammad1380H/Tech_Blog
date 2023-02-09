@@ -14,6 +14,7 @@ class FromColors {
 
   static const linkedTextColor = Color.fromARGB(255, 40, 107, 184);
   static const playedPodColor = Color.fromARGB(255, 255, 139, 26);
+  static const relatedTagsColor = Color.fromARGB(255, 242, 242, 242);
 }
 
 class FromGradiant {
@@ -37,5 +38,9 @@ class FromGradiant {
   static const List<Color> listArt = [
     Color.fromARGB(0, 255, 255, 255),
     Color.fromARGB(100, 0, 0, 0),
+  ];
+  static const List<Color> singleAppBar = [
+    Color.fromARGB(255, 46, 3, 71),
+    Color.fromARGB(0, 0, 0, 0),
   ];
 }

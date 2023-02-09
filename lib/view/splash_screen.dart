@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tech_bloc/component/my_colors.dart';
+import 'package:tech_bloc/component/my_strings.dart';
 import 'package:tech_bloc/controller/home_screen_controller.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
-import 'package:tech_bloc/view/main_page_screen.dart';
+import 'package:tech_bloc/view/mainScreen/main_page_screen.dart';
 import 'package:get/get.dart';
+
+import 'artical/artical_list_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,11 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     homeScreenController.getHomeItem();
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then(
+    Future.delayed(const Duration(microseconds: 200)).then(
       (value) {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => MainPage(),
-        ));
+        Get.offAndToNamed(FromStrings.routMainScreen);
       },
     );
   }

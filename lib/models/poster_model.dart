@@ -1,4 +1,4 @@
-import '../component/api_constant.dart';
+import '../constants/api_constant.dart';
 
 class PosterModel {
   String? id;

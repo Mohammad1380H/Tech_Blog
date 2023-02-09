@@ -2,6 +2,7 @@
     package="com.example.tech_bloc">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
+
         android:label="tech_bloc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
