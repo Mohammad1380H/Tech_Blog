@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_bloc/component/my_colors.dart';
 import 'package:tech_bloc/component/my_component.dart';
 import 'package:tech_bloc/component/my_strings.dart';
+import 'package:tech_bloc/constants/dimens.dart';
 import 'package:tech_bloc/controller/home_screen_controller.dart';
 import 'package:tech_bloc/controller/register_controller.dart';
 import 'package:tech_bloc/gen/assets.gen.dart';
@@ -23,7 +24,7 @@ class MainPage extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double listViewHeight = 170;
-    double marginTag = size.width / 12;
+
     Rx<int> selectedPageIndex = 0.obs;
     return Scaffold(
       key: _key,
@@ -31,7 +32,7 @@ class MainPage extends StatelessWidget {
         backgroundColor: FromColors.scaffColor,
         child: Center(
           child: Padding(
-            padding: EdgeInsets.only(left: marginTag, right: marginTag),
+            padding: EdgeInsets.only(left: FromDimens.marginTag, right: FromDimens.marginTag),
             child: ListView(
               children: [
                 DrawerHeader(
@@ -135,11 +136,11 @@ class MainPage extends StatelessWidget {
                       HomePage(
                           size: size,
                           textTheme: textTheme,
-                          marginTag: marginTag,
+                          marginTag: FromDimens.marginTag,
                           listViewHeight: listViewHeight),
                       ProfilePage(
                         listViewHeight: listViewHeight,
-                        marginTag: marginTag,
+                        marginTag: FromDimens.marginTag,
                         size: size,
                         textTheme: textTheme,
                       ),

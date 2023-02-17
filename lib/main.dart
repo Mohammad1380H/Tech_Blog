@@ -7,6 +7,8 @@ import 'package:tech_bloc/component/my_colors.dart';
 import 'package:tech_bloc/component/my_strings.dart';
 import 'package:tech_bloc/my_http_overrides.dart';
 import 'package:tech_bloc/view/artical/artical_list_screen.dart';
+import 'package:tech_bloc/view/artical/manage_artical_screen.dart';
+import 'package:tech_bloc/view/artical/single_manage_artical_screen.dart';
 import 'package:tech_bloc/view/mainScreen/main_page_screen.dart';
 import 'package:tech_bloc/view/register/register_intro.dart';
 import 'package:tech_bloc/view/artical/single_artical_screen.dart';
@@ -30,17 +32,26 @@ class MyApp extends StatelessWidget {
             page: () => MainPage(),
             binding: RegisterBinding()),
         GetPage(
-            name: FromStrings.routSingleScreen,
-            page: () => SingleArticalScreen(),
-            ),
+          name: FromStrings.routSingleScreen,
+          page: () => SingleArticalScreen(),
+        ),
         GetPage(
-            name: FromStrings.routRegisterIntro,
-            page: () => RegisterIntro(),
-            ),
+          name: FromStrings.routRegisterIntro,
+          page: () => RegisterIntro(),
+        ),
         GetPage(
-            name: FromStrings.routArticalListScreen,
-            page: () => ArticalListScreen(),
-            ),
+          name: FromStrings.routArticalListScreen,
+          page: () => ArticalListScreen(),
+        ),
+        GetPage(
+            name: FromStrings.routManageArticalScreen,
+            page: () => ManageArticalScreen(),
+            binding: ManageArticalBinding()),
+        GetPage(
+            name: FromStrings.routSingleManageArticalScreen,
+            page: () => SingleManageArticalScreen(),
+            binding: ManageArticalBinding()),
+
       ],
       debugShowCheckedModeBanner: false,
       title: 'TechBlog',

@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:tech_bloc/component/my_strings.dart';
 
 class DioServices {
   Dio dio = Dio();
@@ -7,6 +9,7 @@ class DioServices {
     var response = await dio
         .get(url,
             options: Options(responseType: ResponseType.json, method: 'GET'))
+        // ignore: body_might_complete_normally_catch_error
         .catchError((error) {
       if (error is DioError) {
         return error.response!;
@@ -16,8 +19,12 @@ class DioServices {
   }
 
   Future<dynamic> postMethod(String url, Map<String, dynamic> map) async {
+    var token = GetStorage().read(FromStrings.token);
+
     dio.options.headers['content-Type'] = "application/json";
-    //TODO : Read token from storage
+    if (token != null) {
+      dio.options.headers['authorization'] = token;
+    }
     var response = await dio.post(url,
         options: Options(responseType: ResponseType.json, method: 'POST'),
         data: FormData.fromMap(map));

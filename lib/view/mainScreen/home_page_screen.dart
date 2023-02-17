@@ -43,7 +43,11 @@ class HomePage extends StatelessWidget {
                 articalController.getArticalList();
                 Get.toNamed(FromStrings.routArticalListScreen);
               },
-              child: SeeMoreDocs(marginTag: marginTag, textTheme: textTheme)),
+              child: SeeMoreDocs(
+                marginTag: marginTag,
+                textTheme: textTheme,
+                title: FromStrings.hotDoc,
+              )),
           topVisited(
               listViewHeight: listViewHeight,
               marginTag: marginTag,
@@ -377,38 +381,6 @@ class SeeMorePods extends StatelessWidget {
     );
   }
 }
-
-class SeeMoreDocs extends StatelessWidget {
-  const SeeMoreDocs({
-    Key? key,
-    required this.marginTag,
-    required this.textTheme,
-  }) : super(key: key);
-
-  final double marginTag;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: marginTag, top: 32),
-      child: Row(
-        children: [
-          ImageIcon(
-            Assets.icons.penLogo.provider(),
-            color: FromColors.linkedTextColor,
-          ),
-          const SizedBox(width: 2),
-          Text(
-            FromStrings.hotDoc,
-            style: textTheme.headline2,
-          )
-        ],
-      ),
-    );
-  }
-}
-
 
 
 //////////////delegates //////////////////

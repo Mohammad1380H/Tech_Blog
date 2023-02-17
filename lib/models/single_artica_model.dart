@@ -12,13 +12,15 @@ class SingleArticalModel {
   String? status;
   String? createdAt;
   bool? isFavorite;
+
   SingleArticalModel();
+  SingleArticalModel.fakeData(this.title, this.content, this.image);
   SingleArticalModel.fromJson(Map<String, dynamic> element) {
     var info = element['info'];
     id = info["id"];
     title = info["title"];
     content = info["content"];
-    image =  ApiConstant.baseUrlDl + info["image"];
+    image = ApiConstant.baseUrlDl + info["image"];
     catId = info["cat_id"];
     catName = info["cat_name"];
     author = info["author"];
@@ -26,5 +28,6 @@ class SingleArticalModel {
     status = info["status"];
     createdAt = info["created_at"];
     isFavorite = element['isFavorite'];
+
   }
 }

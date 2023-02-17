@@ -14,8 +14,7 @@ import '../../gen/assets.gen.dart';
 // ignore: must_be_immutable
 class SingleArticalScreen extends StatelessWidget {
   var articalController = Get.find<ArticalController>();
-  var singleArticalController =
-      Get.find<SingleArticalController>();
+  var singleArticalController = Get.find<SingleArticalController>();
 
   SingleArticalScreen({super.key});
 
@@ -69,9 +68,14 @@ class SingleArticalScreen extends StatelessWidget {
                           const SizedBox(
                             width: 10,
                           ),
-                          Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
+                          IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              Get.back();
+                            },
                           ),
                           const Expanded(child: SizedBox()),
                           const Icon(
@@ -97,8 +101,8 @@ class SingleArticalScreen extends StatelessWidget {
                               files.add(XFile(singleArticalController
                                   .singleArticalModel.value.content!));
 
-                              await Share.shareXFiles(files,text:"سلام بر شما",subject: "تقدیم شما");
-
+                              await Share.shareXFiles(files,
+                                  text: "سلام بر شما", subject: "تقدیم شما");
                             },
                           ),
                           const SizedBox(
@@ -120,14 +124,17 @@ class SingleArticalScreen extends StatelessWidget {
                             style: textTheme.displaySmall,
                             textAlign: TextAlign.center,
                           ),
+                          const SizedBox(
+                            height: 15,
+                          ),
                           Row(
                             children: [
                               Image(
                                 image: Assets.images.profile.provider(),
-                                width: 60,
+                                width: 55,
                               ),
                               const SizedBox(
-                                width: 10,
+                                width: 12,
                               ),
                               Text(
                                   singleArticalController
@@ -141,6 +148,9 @@ class SingleArticalScreen extends StatelessWidget {
                                       .singleArticalModel.value.createdAt!,
                                   style: textTheme.displaySmall)
                             ],
+                          ),
+                          const SizedBox(
+                            height: 10,
                           ),
                           HtmlWidget(
                             singleArticalController
@@ -317,3 +327,4 @@ class SingleArticalScreen extends StatelessWidget {
     );
   }
 }
+//flutter build apk --split-per-abi

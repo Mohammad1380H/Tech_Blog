@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,7 +7,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tech_bloc/component/my_strings.dart';
 import 'package:tech_bloc/constants/api_constant.dart';
 import 'package:tech_bloc/services/dio_services.dart';
-import 'package:tech_bloc/view/artical/manage_artical_screen.dart';
 
 import '../constants/storage_constant.dart';
 import '../gen/assets.gen.dart';
@@ -44,8 +43,8 @@ class RegisterController extends GetxController {
       case 'verified':
         {
           var storage = GetStorage();
-          storage.write(token, response.data['token']);
-          storage.write(userId, response.data['user_id']);
+          storage.write('token', response.data['token']);
+          storage.write('userId', response.data['user_id']);
 
           Get.snackbar("تایید", "خوش آمدید!",
               backgroundColor: Colors.greenAccent);
@@ -109,21 +108,24 @@ class RegisterController extends GetxController {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => ManageArticalScreen());
+                      Get.toNamed(FromStrings.routManageArticalScreen);
                     },
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          Assets.icons.writeArticles.path,
-                          width: 40,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(FromStrings.manageArts,
-                            style: Get.textTheme.displaySmall,
-                            textAlign: TextAlign.center),
-                      ],
+                    child: Container(
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            Assets.icons.writeArticles.path,
+                            width: 40,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(FromStrings.manageArts,
+                              style: Get.textTheme.displaySmall,
+                              textAlign: TextAlign.center),
+                        ],
+                      ),
                     ),
                   ),
                   Row(

@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:tech_bloc/controller/artical_controller.dart';
 import 'package:tech_bloc/controller/home_screen_controller.dart';
 import 'package:tech_bloc/controller/single_artical_controller.dart';
@@ -11,10 +12,9 @@ import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/component/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'my_strings.dart';
+
 // ignore: must_be_immutable
-
-
-
 
 class TechDivider extends StatelessWidget {
   TechDivider({
@@ -127,11 +127,14 @@ PreferredSize specialAppBar(TextTheme textTheme, {required Widget action}) {
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [Center(child: action)],
-        leading: Container(
-          decoration: BoxDecoration(
-              color: FromColors.primaryColor.withAlpha(170),
-              shape: BoxShape.circle),
-          child: const Icon(Icons.arrow_back),
+        leading: GestureDetector(
+          onTap: () => Get.back(),
+          child: Container(
+            decoration: BoxDecoration(
+                color: FromColors.primaryColor.withAlpha(170),
+                shape: BoxShape.circle),
+            child: const Icon(Icons.arrow_back),
+          ),
         ),
       ),
     ),
@@ -216,4 +219,37 @@ Center loading(double size) {
       size: size,
     ),
   );
+}
+
+class SeeMoreDocs extends StatelessWidget {
+  const SeeMoreDocs({
+    Key? key,
+    required this.marginTag,
+    required this.textTheme,
+    required this.title
+  }) : super(key: key);
+
+  final double marginTag;
+  final TextTheme textTheme;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: marginTag, top: 32),
+      child: Row(
+        children: [
+          ImageIcon(
+            Assets.icons.penLogo.provider(),
+            color: FromColors.linkedTextColor,
+          ),
+          const SizedBox(width: 2),
+          Text(
+           title,
+            style: textTheme.headline2,
+          )
+        ],
+      ),
+    );
+  }
 }
