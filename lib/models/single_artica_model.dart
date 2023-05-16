@@ -14,7 +14,7 @@ class SingleArticalModel {
   bool? isFavorite;
 
   SingleArticalModel();
-  SingleArticalModel.fakeData(this.title, this.content, this.image);
+  SingleArticalModel.simpleData(this.title, this.content, this.image);
   SingleArticalModel.fromJson(Map<String, dynamic> element) {
     var info = element['info'];
     id = info["id"];
@@ -28,6 +28,5 @@ class SingleArticalModel {
     status = info["status"];
     createdAt = info["created_at"];
     isFavorite = element['isFavorite'];
-
   }
 }

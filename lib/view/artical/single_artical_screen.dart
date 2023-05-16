@@ -138,7 +138,7 @@ class SingleArticalScreen extends StatelessWidget {
                               ),
                               Text(
                                   singleArticalController
-                                      .singleArticalModel.value.author!,
+                                      .singleArticalModel.value.author?? " ",
                                   style: textTheme.displaySmall),
                               const SizedBox(
                                 width: 20,

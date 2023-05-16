@@ -42,7 +42,7 @@ class ArticalListScreen extends StatelessWidget {
                       },
                       child: APListDelegate(index, textTheme,
                           image: artList[index].image!,
-                          writer: artList[index].author!,
+                          writer: artList[index].author??" ",
                           view: artList[index].view!,
                           title: artList[index].title!),
                     );

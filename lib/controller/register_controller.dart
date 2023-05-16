@@ -1,5 +1,5 @@
-
-
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -15,9 +15,9 @@ class RegisterController extends GetxController {
   TextEditingController emailTextEditController = TextEditingController();
   TextEditingController activateCodeTextEditController =
       TextEditingController();
-  var email = '';
-  var userId = '';
-  var status = '';
+  String email = "";
+  String userId = "";
+  String status = "";
   register() async {
     Map<String, dynamic> map = {
       'email': emailTextEditController.text,
@@ -25,8 +25,11 @@ class RegisterController extends GetxController {
     };
     var response =
         await DioServices().postMethod(ApiConstant.postRegister, map);
+    log(response.data);
+    String jsonsDataString = response.data.toString();
+    var jsonData = jsonDecode(jsonsDataString);
     email = emailTextEditController.text;
-    userId = response.data['user_id'];
+    userId = jsonData["user_id"];
   }
 
   verifyAndGoPage() async {
@@ -36,15 +39,21 @@ class RegisterController extends GetxController {
       'code': activateCodeTextEditController.text,
       'command': 'verify'
     };
+
     var response =
         await DioServices().postMethod(ApiConstant.postRegister, map);
-    status = response.data['response'];
+    log(response.data + "ddf");
+        String jsonsDataString = response.data.toString();
+    var jsonData = jsonDecode(jsonsDataString);
+    status = jsonData["response"];
+
+    log("${status}eeee");
     switch (status) {
       case 'verified':
         {
           var storage = GetStorage();
-          storage.write('token', response.data['token']);
-          storage.write('userId', response.data['user_id']);
+          storage.write('token', jsonData['token']);
+          storage.write('userId', jsonData['user_id']);
 
           Get.snackbar("تایید", "خوش آمدید!",
               backgroundColor: Colors.greenAccent);

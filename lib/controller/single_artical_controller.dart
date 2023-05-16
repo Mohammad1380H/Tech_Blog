@@ -10,10 +10,9 @@ class SingleArticalController extends GetxController {
   RxList<ArticalModel> relatedArticalList = RxList();
   RxList<TagsModel> tagsList = RxList();
 
-
   getSingleArtical(String id) async {
-
-    singleArticalModel = SingleArticalModel().obs;// we don't use isLoading ! Because SingleArtical has null fieald with def cont
+    singleArticalModel = SingleArticalModel()
+        .obs; // we don't use isLoading ! Because SingleArtical has null field with default constructor
     relatedArticalList.clear();
     tagsList.clear();
     var response = await DioServices().getMethod(
@@ -26,7 +25,6 @@ class SingleArticalController extends GetxController {
       response.data['tags'].forEach((el) {
         tagsList.add(TagsModel.fromJson(el));
       });
- 
     }
   }
 }

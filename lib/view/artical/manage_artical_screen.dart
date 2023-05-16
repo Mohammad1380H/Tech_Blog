@@ -34,11 +34,23 @@ class ManageArticalScreen extends StatelessWidget {
                     itemCount: manageArticalController.articalList.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          manageArticalController.updateModeEnabled.value =
+                              true;
+
+                          manageArticalController
+                              .singleManageArticalModel.value.title = null;
+
+                          manageArticalController.getPublishedByMeArticalWithId(
+                              manageArticalController.articalList[index].id!);
+
+                          Get.toNamed(
+                              FromStrings.routSingleManageArticalScreen);
+                        },
                         child: APListDelegate(index, textTheme,
                             image: manageArticalController
                                 .articalList[index].image!,
-                            writer:"",
+                            writer: " ",
                             view: manageArticalController
                                 .articalList[index].view!,
                             title: manageArticalController
@@ -51,6 +63,8 @@ class ManageArticalScreen extends StatelessWidget {
         child: ElevatedButton(
           style: Theme.of(context).elevatedButtonTheme.style,
           onPressed: () {
+            manageArticalController.setDefaultText();
+            
             Get.toNamed(FromStrings.routSingleManageArticalScreen);
           },
           child: const Text("بریم برای نوشتن یه مقاله‌ی باحال"),

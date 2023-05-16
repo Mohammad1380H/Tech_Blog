@@ -18,7 +18,7 @@ import '../../component/my_component.dart';
 // ignore: must_be_immutable
 class SingleManageArticalScreen extends StatelessWidget {
   var manageArticalController = Get.find<ManageArticalController>();
-  var pickerFileController = Get.find<FilePickerController>();
+  var pickerFileController = Get.put(FilePickerController());
   SingleManageArticalScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -203,13 +203,21 @@ class SingleManageArticalScreen extends StatelessWidget {
                             height: 40,
                           ),
                           ElevatedButton(
-                              onPressed: () async{
-                                await manageArticalController.postArtical();
+                              onPressed: () async {
+                                if (manageArticalController
+                                    .updateModeEnabled.value) {
+                                  await manageArticalController.updateArtical();
+                                } else {
+                                  await manageArticalController.postArtical();
+                                }
                               },
                               child: Text(
                                   manageArticalController.isLoading.value
                                       ? "صبر کنید"
-                                      : "ارسال مقاله"))
+                                      : manageArticalController
+                                              .updateModeEnabled.value
+                                          ? "ویرایش مقاله"
+                                          : "ارسال مقاله"))
                         ],
                       ),
                     ),
@@ -260,7 +268,7 @@ class SingleManageArticalScreen extends StatelessWidget {
         ),
         color: FromColors.scaffColor,
       ),
-      height: Get.height / 1.5,
+      height: Get.height / 3,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(children: [
@@ -296,6 +304,7 @@ class SingleManageArticalScreen extends StatelessWidget {
                         .update((val) {
                       val!.catId = homeScreenController.tagList[index].id;
                       val.catName = homeScreenController.tagList[index].title;
+                      debugPrint(val.catId);
                     });
                     Get.back();
                   },

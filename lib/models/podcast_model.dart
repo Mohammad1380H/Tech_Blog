@@ -4,8 +4,7 @@ class PodcastModel {
   String? id;
   String? title;
   String? poster;
-  String? catName;
-  String? author;
+  String? publisher ;
   String? view;
   String? status;
   String? createdAt;
@@ -14,8 +13,7 @@ class PodcastModel {
     required this.id,
     required this.title,
     required this.poster,
-    required this.catName,
-    required this.author,
+    required this.publisher,
     required this.view,
     required this.status,
     required this.createdAt,
@@ -24,9 +22,8 @@ class PodcastModel {
   PodcastModel.fromJson(Map<String, dynamic> element) {
     id = element["id"];
     title = element["title"];
-    poster = ApiConstant.baseUrlDl +  element["poster"];
-    catName = element["cat_name"];
-    author = element["author"];
+    poster = ApiConstant.baseUrlDl + ( element["poster"]??" ");
+    publisher = element["author"];
     view = element["view"];
     status = element["status"];
     createdAt = element["created_at"];

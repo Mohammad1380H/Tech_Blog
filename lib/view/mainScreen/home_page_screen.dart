@@ -7,6 +7,7 @@ import 'package:tech_bloc/component/my_component.dart';
 import 'package:tech_bloc/component/my_strings.dart';
 import 'package:tech_bloc/controller/artical_controller.dart';
 import 'package:tech_bloc/controller/home_screen_controller.dart';
+import 'package:tech_bloc/controller/podcast_controller.dart';
 import 'package:tech_bloc/controller/single_artical_controller.dart';
 import 'package:tech_bloc/view/artical/artical_list_screen.dart';
 import '../../gen/assets.gen.dart';
@@ -29,6 +30,7 @@ class HomePage extends StatelessWidget {
   SingleArticalController singleArticalController =
       Get.put(SingleArticalController());
   ArticalController articalController = Get.put(ArticalController());
+  PodcastController podcastController = Get.put(PodcastController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,12 @@ class HomePage extends StatelessWidget {
               listViewHeight: listViewHeight,
               marginTag: marginTag,
               textTheme: textTheme),
-          SeeMorePods(marginTag: marginTag, textTheme: textTheme),
+          GestureDetector(
+              onTap: () {
+                podcastController.getPodcastList();
+                Get.toNamed(FromStrings.routPodcastListScreen);
+              },
+              child: SeeMorePods(marginTag: marginTag, textTheme: textTheme)),
           topVisitedPods(),
           const SizedBox(
             height: 110,

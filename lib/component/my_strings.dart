@@ -39,6 +39,7 @@ class FromStrings {
   static String routSingleScreen = "/SingleScreen";
   static String routRegisterIntro = "/RegisterIntro";
   static String routArticalListScreen = "/ArticalListScreen";
+  static String routPodcastListScreen = "/PodcastListScreen";
   static String routManageArticalScreen = "/ManageArticalScreen";
   static String routSingleManageArticalScreen = "/SingleManageArticalScreen";
 }

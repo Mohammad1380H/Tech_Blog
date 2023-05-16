@@ -92,7 +92,7 @@ class RelatedTags extends StatelessWidget {
           color: FromColors.relatedTagsColor,
           borderRadius: BorderRadius.circular(25)),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        padding: const EdgeInsets.fromLTRB(10, 0, 8, 0),
         child: Row(
           children: [
             SizedBox(
@@ -201,7 +201,7 @@ Padding APListDelegate(int index, TextTheme textTheme,
                 Text(
                   style: textTheme.headlineMedium,
                   textAlign: TextAlign.center,
-                  " $view بازدید ",
+                  view == "" ? "" : "$view بازدید ",
                 ),
               ],
             )
@@ -222,12 +222,12 @@ Center loading(double size) {
 }
 
 class SeeMoreDocs extends StatelessWidget {
-  const SeeMoreDocs({
-    Key? key,
-    required this.marginTag,
-    required this.textTheme,
-    required this.title
-  }) : super(key: key);
+  const SeeMoreDocs(
+      {Key? key,
+      required this.marginTag,
+      required this.textTheme,
+      required this.title})
+      : super(key: key);
 
   final double marginTag;
   final TextTheme textTheme;
@@ -245,7 +245,7 @@ class SeeMoreDocs extends StatelessWidget {
           ),
           const SizedBox(width: 2),
           Text(
-           title,
+            title,
             style: textTheme.headline2,
           )
         ],

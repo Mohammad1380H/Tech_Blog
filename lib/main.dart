@@ -10,14 +10,15 @@ import 'package:tech_bloc/view/artical/artical_list_screen.dart';
 import 'package:tech_bloc/view/artical/manage_artical_screen.dart';
 import 'package:tech_bloc/view/artical/single_manage_artical_screen.dart';
 import 'package:tech_bloc/view/mainScreen/main_page_screen.dart';
+import 'package:tech_bloc/view/podcast/podcast_list_screen.dart';
 import 'package:tech_bloc/view/register/register_intro.dart';
 import 'package:tech_bloc/view/artical/single_artical_screen.dart';
 import 'package:tech_bloc/view/splash_screen.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(const MyApp());
   await GetStorage.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -42,6 +43,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: FromStrings.routArticalListScreen,
           page: () => ArticalListScreen(),
+        ),
+        GetPage(
+          name: FromStrings.routPodcastListScreen,
+          page: () => PodcastListScreen(),
         ),
         GetPage(
             name: FromStrings.routManageArticalScreen,
@@ -70,13 +75,13 @@ class MyApp extends StatelessWidget {
               MaterialStateProperty.resolveWith<TextStyle?>((states) {
         if (states.contains(MaterialState.pressed)) {
           return const TextStyle(
-              fontFamily: "homa",
+              fontFamily: "shabnam",
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: FromColors.hintTexes);
         }
         return const TextStyle(
-            fontFamily: "homa",
+            fontFamily: "shabnam",
             fontSize: 16,
             fontWeight: FontWeight.normal,
             color: FromColors.hintTexes);
@@ -88,28 +93,28 @@ class MyApp extends StatelessWidget {
       }))),
       textTheme: const TextTheme(
           displayLarge: TextStyle(
-              fontFamily: "homa",
+              fontFamily: "shabnam",
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: FromColors.posterTitle),
           displayMedium: TextStyle(
-              fontFamily: "homa",
+              fontFamily: "shabnam",
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: FromColors.linkedTextColor),
           displaySmall: TextStyle(
-              fontFamily: "homa",
+              fontFamily: "shabnam",
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: FromColors.articalPreviewTitle),
           headlineMedium: TextStyle(
-              fontFamily: "homa",
+              fontFamily: "shabnam",
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: FromColors.hintTexes),
           titleMedium: TextStyle(
-              fontFamily: "homa",
-              fontSize: 14,
+              fontFamily: "shabnam",
+              fontSize: 12,
               color: FromColors.posterSubTitle)),
       primarySwatch: Colors.purple,
     );

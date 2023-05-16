@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -169,6 +171,7 @@ class RegisterIntro extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 10),
                     child: ElevatedButton(
                         onPressed: () {
+
                           registerController.verifyAndGoPage();
                           // Navigator.of(context).pushReplacement(MaterialPageRoute(
                           //     builder: (context) => Categories()));
