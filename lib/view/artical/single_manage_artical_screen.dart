@@ -24,7 +24,6 @@ class SingleManageArticalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
-    double listViewHeight = 170;
     double marginTag = size.width / 96;
     return SafeArea(
         child: Scaffold(
@@ -286,7 +285,7 @@ class SingleManageArticalScreen extends StatelessWidget {
             height: Get.height / 8,
             width: double.maxFinite,
             child: GridView.builder(
-              padding: EdgeInsets.only(right: FromDimens.marginTag / 2),
+              padding: EdgeInsets.only(right: Dimens.marginTag / 2),
               scrollDirection: Axis.horizontal,
               itemCount: homeScreenController.tagList.length,
               shrinkWrap: true,

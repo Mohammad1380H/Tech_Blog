@@ -11,6 +11,7 @@ import 'package:tech_bloc/view/artical/manage_artical_screen.dart';
 import 'package:tech_bloc/view/artical/single_manage_artical_screen.dart';
 import 'package:tech_bloc/view/mainScreen/main_page_screen.dart';
 import 'package:tech_bloc/view/podcast/podcast_list_screen.dart';
+import 'package:tech_bloc/view/podcast/single_podcast_screen.dart';
 import 'package:tech_bloc/view/register/register_intro.dart';
 import 'package:tech_bloc/view/artical/single_artical_screen.dart';
 import 'package:tech_bloc/view/splash_screen.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      
       getPages: [
         GetPage(
             name: FromStrings.routMainScreen,
@@ -35,6 +37,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: FromStrings.routSingleScreen,
           page: () => SingleArticalScreen(),
+        ),
+        GetPage(
+          name: FromStrings.routSinglePodcastScreen,
+          page: () =>  SinglePodcastScreen(),
         ),
         GetPage(
           name: FromStrings.routRegisterIntro,
@@ -112,6 +118,11 @@ class MyApp extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: FromColors.hintTexes),
+              titleSmall: TextStyle(
+              fontFamily: "shabnam",
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: FromColors.articalPreviewTitle),
           titleMedium: TextStyle(
               fontFamily: "shabnam",
               fontSize: 12,

@@ -1,6 +1,7 @@
 class FromStrings {
   static String hotDoc = "داغترین نوشته ها";
   static String userId = "userId";
+  static String emailAddress = "email";
   static String token = "token";
   static String selectCat = "انتخاب دسته بندی ";
   static String editHere = "ویرایش عنوان مقاله";
@@ -37,9 +38,11 @@ class FromStrings {
 
   static String routMainScreen = "/MainScreen";
   static String routSingleScreen = "/SingleScreen";
+  static String routSinglePodcastScreen = "/SinglePodcastScreen";
   static String routRegisterIntro = "/RegisterIntro";
   static String routArticalListScreen = "/ArticalListScreen";
   static String routPodcastListScreen = "/PodcastListScreen";
   static String routManageArticalScreen = "/ManageArticalScreen";
   static String routSingleManageArticalScreen = "/SingleManageArticalScreen";
+
 }

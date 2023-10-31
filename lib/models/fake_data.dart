@@ -1,7 +1,5 @@
 import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/models/data_model.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
 
 import 'package:tech_bloc/models/tags_model.dart';
 

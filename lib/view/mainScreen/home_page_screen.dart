@@ -125,53 +125,59 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Padding podDelegates(int index) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(20, 0, index == 0 ? marginTag : 0, 0),
-      child: Column(
-        children: [
-          SizedBox(
-            width: listViewHeight - listViewHeight / 7,
-            height: listViewHeight - listViewHeight / 7,
-            child: CachedNetworkImage(
-              imageUrl: homeScreenController.topPodcasts[index].poster!,
-              imageBuilder: (context, imageProvider) => Container(
-                foregroundDecoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                        colors: FromGradiant.listArt,
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
-                    borderRadius: BorderRadius.circular(15)),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
-                        fit: BoxFit.cover, image: imageProvider)),
+  GestureDetector podDelegates(int index) {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(FromStrings.routSinglePodcastScreen,
+            arguments: homeScreenController.topPodcasts[index]);
+      },
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(20, 0, index == 0 ? marginTag : 0, 0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: listViewHeight - listViewHeight / 7,
+              height: listViewHeight - listViewHeight / 7,
+              child: CachedNetworkImage(
+                imageUrl: homeScreenController.topPodcasts[index].poster!,
+                imageBuilder: (context, imageProvider) => Container(
+                  foregroundDecoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                          colors: FromGradiant.listArt,
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
+                      borderRadius: BorderRadius.circular(15)),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                          fit: BoxFit.cover, image: imageProvider)),
+                ),
+                placeholder: (c, i) => const SpinKitFadingCircle(
+                  color: FromColors.primaryColor,
+                  size: 50.0,
+                ),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.music_off_outlined),
               ),
-              placeholder: (c, i) => const SpinKitFadingCircle(
-                color: FromColors.primaryColor,
-                size: 50.0,
-              ),
-              errorWidget: (context, url, error) =>
-                  const Icon(Icons.music_off_outlined),
             ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: SizedBox(
-                width: listViewHeight / 1.15,
-                child: Text(
-                  textAlign: TextAlign.center,
-                  homeScreenController.topPodcasts[index].title!,
-                  style: textTheme.displaySmall,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: SizedBox(
+                  width: listViewHeight / 1.15,
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    homeScreenController.topPodcasts[index].title!,
+                    style: textTheme.displaySmall,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

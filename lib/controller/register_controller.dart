@@ -19,6 +19,8 @@ class RegisterController extends GetxController {
   String userId = "";
   String status = "";
   register() async {
+    await GetStorage()
+        .write(FromStrings.emailAddress, emailTextEditController.text);
     Map<String, dynamic> map = {
       'email': emailTextEditController.text,
       'command': 'register'
@@ -43,7 +45,7 @@ class RegisterController extends GetxController {
     var response =
         await DioServices().postMethod(ApiConstant.postRegister, map);
     log(response.data + "ddf");
-        String jsonsDataString = response.data.toString();
+    String jsonsDataString = response.data.toString();
     var jsonData = jsonDecode(jsonsDataString);
     status = jsonData["response"];
 

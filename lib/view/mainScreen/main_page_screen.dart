@@ -32,7 +32,8 @@ class MainPage extends StatelessWidget {
         backgroundColor: FromColors.scaffColor,
         child: Center(
           child: Padding(
-            padding: EdgeInsets.only(left: FromDimens.marginTag, right: FromDimens.marginTag),
+            padding: EdgeInsets.only(
+                left: Dimens.marginTag, right: Dimens.marginTag),
             child: ListView(
               children: [
                 DrawerHeader(
@@ -43,7 +44,7 @@ class MainPage extends StatelessWidget {
                 ListTile(
                   title: Text(
                     "پروفایل کاربری",
-                    style: textTheme.headline3,
+                    style: textTheme.displaySmall,
                   ),
                   onTap: () {},
                 ),
@@ -54,7 +55,7 @@ class MainPage extends StatelessWidget {
                 ListTile(
                   title: Text(
                     "درباره تک‌بلاگ",
-                    style: textTheme.headline3,
+                    style: textTheme.displaySmall,
                   ),
                   onTap: () {},
                 ),
@@ -65,7 +66,7 @@ class MainPage extends StatelessWidget {
                 ListTile(
                   title: Text(
                     "اشتراک گذاری تک بلاگ",
-                    style: textTheme.headline3,
+                    style: textTheme.displaySmall,
                   ),
                   onTap: () async {
                     await Share.share(FromStrings.shareText);
@@ -78,7 +79,7 @@ class MainPage extends StatelessWidget {
                 ListTile(
                   title: Text(
                     "تک بلاگ در گیتهاب",
-                    style: textTheme.headline3,
+                    style: textTheme.displaySmall,
                   ),
                   onTap: () {
                     openUrl(FromStrings.techBlogGitHub);
@@ -136,11 +137,11 @@ class MainPage extends StatelessWidget {
                       HomePage(
                           size: size,
                           textTheme: textTheme,
-                          marginTag: FromDimens.marginTag,
+                          marginTag: Dimens.marginTag,
                           listViewHeight: listViewHeight),
                       ProfilePage(
                         listViewHeight: listViewHeight,
-                        marginTag: FromDimens.marginTag,
+                        marginTag: Dimens.marginTag,
                         size: size,
                         textTheme: textTheme,
                       ),

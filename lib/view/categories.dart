@@ -23,7 +23,7 @@ class _CategoriesState extends State<Categories> {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double marginTag = size.width / 12;
-    //TODO responsive
+
     return SafeArea(
       child: Scaffold(
         body: Center(

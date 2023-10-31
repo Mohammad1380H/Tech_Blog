@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
 import 'package:tech_bloc/models/podcast_model.dart';
 import '../constants/api_constant.dart';
-import '../models/article_model.dart';
 import '../services/dio_services.dart';
 
 class PodcastController extends GetxController {

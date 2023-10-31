@@ -10,7 +10,9 @@ class ApiConstant {
   static const String getArticalList =
       "${baseUrl}article/get.php?command=new&user_id=";
   static const String getPodcastList =
-      "${baseUrl}podcast/get.php?command=new&user_id=1";
+      "${baseUrl}podcast/get.php?command=new&user_id=1"; 
+       static const String getPodcastFiles =
+      "${baseUrl}podcast/get.php?command=get_files&podcats_id=";
 }
 
 class ApiKeyConstant {
@@ -22,5 +24,4 @@ class ApiKeyConstant {
   static const String userId = 'user_id';
   static const String image = 'image';
   static const String command = 'command';
-
 }

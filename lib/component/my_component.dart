@@ -4,18 +4,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:tech_bloc/controller/artical_controller.dart';
-import 'package:tech_bloc/controller/home_screen_controller.dart';
-import 'package:tech_bloc/controller/single_artical_controller.dart';
+
 import 'package:tech_bloc/gen/assets.gen.dart';
 import 'package:tech_bloc/component/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'my_strings.dart';
 
 // ignore: must_be_immutable
 
+// ignore: must_be_immutable
 class TechDivider extends StatelessWidget {
   TechDivider({
     Key? key,
@@ -246,7 +243,7 @@ class SeeMoreDocs extends StatelessWidget {
           const SizedBox(width: 2),
           Text(
             title,
-            style: textTheme.headline2,
+            style: textTheme.displayMedium,
           )
         ],
       ),

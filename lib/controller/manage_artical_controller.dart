@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:dio/dio.dart' as dioClass;
+import 'package:dio/dio.dart' as dio_class;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -81,7 +81,7 @@ class ManageArticalController extends GetxController {
       ApiKeyConstant.catId: singleManageArticalModel.value.catId,
       ApiKeyConstant.tagList: "[2,6]",
       ApiKeyConstant.userId: GetStorage().read(FromStrings.userId),
-      ApiKeyConstant.image: await dioClass.MultipartFile.fromFile(
+      ApiKeyConstant.image: await dio_class.MultipartFile.fromFile(
           fileController.file.value.path!),
       ApiKeyConstant.command: "store",
     };
@@ -105,7 +105,7 @@ class ManageArticalController extends GetxController {
       ApiKeyConstant.content: singleManageArticalModel.value.content,
       ApiKeyConstant.catId: singleManageArticalModel.value.catId,
       ApiKeyConstant.userId: GetStorage().read(FromStrings.userId),
-      ApiKeyConstant.image: await dioClass.MultipartFile.fromFile(
+      ApiKeyConstant.image: await dio_class.MultipartFile.fromFile(
           fileController.file.value.path ??
              await DioServices().downloadImage(singleManageArticalModel.value.image!)),
       ApiKeyConstant.command: "update",

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,7 +31,7 @@ class RegisterIntro extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                     text: FromStrings.registerIntroMsg,
-                    style: textTheme.headline3)),
+                    style: textTheme.displaySmall)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 60),
@@ -53,7 +52,6 @@ class RegisterIntro extends StatelessWidget {
       BuildContext context, Size size, TextTheme textTheme) {
     // RegExp isEmail = RegExp('^[a-z-0-9]+@');
     bool isEmailCorrect = false;
-    bool isEmailEmpty = true;
 
     return showModalBottomSheet(
         isScrollControlled: true,
@@ -77,7 +75,7 @@ class RegisterIntro extends StatelessWidget {
                 children: [
                   Text(
                     FromStrings.insertEmail,
-                    style: textTheme.headline3,
+                    style: textTheme.displaySmall,
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
@@ -85,7 +83,6 @@ class RegisterIntro extends StatelessWidget {
                       controller: registerController.emailTextEditController,
                       onChanged: (value) {
                         isEmailCorrect = isEmail(value);
-                        isEmailEmpty = value.isEmpty;
                       },
                       style: const TextStyle(
                           color: FromColors.articalPreviewTitle),
@@ -95,7 +92,7 @@ class RegisterIntro extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           hintText: "techblog@gmail.com",
-                          hintStyle: textTheme.headline4),
+                          hintStyle: textTheme.headlineMedium),
                     ),
                   ),
                   Padding(
@@ -109,7 +106,7 @@ class RegisterIntro extends StatelessWidget {
                                 context, size, textTheme);
                           }
                         },
-                        child: Text("ادامه")),
+                        child: const Text("ادامه")),
                   )
                 ],
               )),
@@ -121,7 +118,6 @@ class RegisterIntro extends StatelessWidget {
   Future<dynamic> _showActivateCodeButtomSheet(
       BuildContext context, Size size, TextTheme textTheme) {
     // RegExp isEmail = RegExp('^[a-z-0-9]+@');
-    bool isEmailCorrect = false;
 
     return showModalBottomSheet(
         isScrollControlled: true,
@@ -145,7 +141,7 @@ class RegisterIntro extends StatelessWidget {
                 children: [
                   Text(
                     FromStrings.insertActivateCode,
-                    style: textTheme.headline3,
+                    style: textTheme.displaySmall,
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
@@ -153,7 +149,6 @@ class RegisterIntro extends StatelessWidget {
                       controller: Get.find<RegisterController>()
                           .activateCodeTextEditController,
                       onChanged: (value) {
-                        isEmailCorrect = isEmail(value);
                       },
                       style: const TextStyle(
                           color: FromColors.articalPreviewTitle),
@@ -164,7 +159,7 @@ class RegisterIntro extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           hintText: "*****",
-                          hintStyle: textTheme.headline4),
+                          hintStyle: textTheme.headlineMedium),
                     ),
                   ),
                   Padding(

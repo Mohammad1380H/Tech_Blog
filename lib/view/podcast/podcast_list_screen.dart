@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_bloc/controller/podcast_controller.dart';
 import '../../component/my_component.dart';
+import '../../component/my_strings.dart';
 
 // ignore: must_be_immutable
 class PodcastListScreen extends StatelessWidget {
   String? title;
   var podcastController = Get.find<PodcastController>();
-  // var singleArticalController = Get.find<SingleArticalController>();
+
   PodcastListScreen({super.key, this.title});
 
   @override
@@ -34,14 +35,13 @@ class PodcastListScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        // singleArticalController
-                        //     .getSingleArtical(artList[index].id!);
-                        // Get.to(() => SingleArticalScreen());
+                        Get.toNamed(FromStrings.routSinglePodcastScreen,
+                            arguments: podcastController.podcastList[index]);
                       },
                       child: APListDelegate(index, textTheme,
                           image: podList[index].poster!,
-                          writer: podList[index].publisher??" ",
-                          view:"",
+                          writer: podList[index].publisher ?? " ",
+                          view: "",
                           title: podList[index].title!),
                     );
                   }),
